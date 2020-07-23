@@ -37,7 +37,7 @@ function image_to_latex() {
             -H "Content-Type: application/json" \
             --data "{\"src\":\"data:image/jpeg;base64,'$data'\"}")
 
-    if [ $? -ne 0 ]; then
+    if [ ! -n "$response" ]; then
         echo "connection error"
         return 1
     fi
