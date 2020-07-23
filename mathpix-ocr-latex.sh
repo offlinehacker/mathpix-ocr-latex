@@ -31,11 +31,12 @@ function image_to_latex() {
     local mode="$2"
 
     local response=$(
+        echo "{\"src\":\"data:image/jpeg;base64,'$data'\"}" | \
         curl --silent https://api.mathpix.com/v3/${mode} -X POST \
             -H "app_id: ${MATHPIX_ID}" \
             -H "app_key: ${MATHPIX_KEY}" \
             -H "Content-Type: application/json" \
-            --data "{\"src\":\"data:image/jpeg;base64,'$data'\"}")
+            -d @-)
 
     if [ ! -n "$response" ]; then
         echo "connection error"
