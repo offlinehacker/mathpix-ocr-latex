@@ -9,3 +9,9 @@ Converts image in clipboard to latex using mathpix API
 - jq
 - libnotify
 - wl-clipboard (if using wayland)
+
+## Development
+
+```
+nix-shell -p jq -p curl -p libnotify -p wl-clipboard
+```
